@@ -1,0 +1,27 @@
+components:
+  - name: api
+    runtime: dotnet
+    target: app-service
+    project: src/Api/Api.csproj
+    dotnet-version: '10.0.x'
+    test-project: tests/Api.Tests/Api.Tests.csproj
+    app-test: api-test
+    app-prod: api
+
+  - name: contracts
+    runtime: dotnet
+    target: package
+    project: src/Contracts/Contracts.csproj
+    dotnet-version: '10.0.x'
+
+  - name: web
+    runtime: node
+    target: app-service
+    path: src/web
+    app-test: web-test
+    app-prod: web
+
+  - name: sdk
+    runtime: python
+    target: package
+    path: src/sdk
